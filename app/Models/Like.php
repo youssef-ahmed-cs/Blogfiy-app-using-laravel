@@ -9,7 +9,9 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Like extends Model
 {
+
     /** @use HasFactory<\Database\Factories\LikeFactory> */
+
     use HasFactory;
 
     protected $fillable = [
