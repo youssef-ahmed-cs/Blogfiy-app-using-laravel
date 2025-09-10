@@ -41,3 +41,4 @@ class Post extends Model
         }
         return $this->likes()->where('user_id', $user->id)->exists();
     }
+}

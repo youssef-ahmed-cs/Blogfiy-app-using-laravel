@@ -6,6 +6,7 @@ use App\Http\Requests\AuthManagement\AuthLoginRequest;
 use App\Http\Requests\AuthManagement\AuthRegisterRequest;
 use App\Mail\WelcomeMail;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -16,7 +17,7 @@ class AuthController extends Controller
         return view('Auth.register');
     }
 
-    public function registerPost(AuthRegisterRequest $request)
+    public function registerPost(AuthRegisterRequest $request): RedirectResponse
     {
         $data = $request->validated();
         $user = User::create($data);
@@ -45,7 +46,7 @@ class AuthController extends Controller
         return view('Auth.login');
     }
 
-    public function loginPost(AuthLoginRequest $request)
+    public function loginPost(AuthLoginRequest $request): RedirectResponse
     {
         $request->validated();
         if (auth()->attempt($request->only('email', 'password'))) {
